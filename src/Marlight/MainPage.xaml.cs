@@ -5,18 +5,22 @@ using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using System.IO.IsolatedStorage;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Marlight.Resources;
-using System.IO.IsolatedStorage;
+using Coding4Fun.Toolkit.Controls;
 
 namespace Marlight
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        private bool RGB;
+
         // Конструктор
         public MainPage()
         {
+            RGB = false;
             InitializeComponent();
             Init();                      
 
@@ -35,6 +39,8 @@ namespace Marlight
 
         private void btnColor_Click(object sender, RoutedEventArgs e)
         {
+            RGB = true;
+            cApiSingleton.Instance.RGBModeOn();
             NavigationService.Navigate(new Uri("/PageColor.xaml", UriKind.Relative));    
                
         }
@@ -52,15 +58,103 @@ namespace Marlight
             Init();
         }
 
-        private void slWarm_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void btnMode_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void btnMode_Click(object sender, RoutedEventArgs e)
+        private void slWarm_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-
+            if (e.NewValue > e.OldValue)
+                cApiSingleton.Instance.TempWarmer();
+            else
+                cApiSingleton.Instance.TempColder();
         }     
+
+        private void slLight_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if(e.NewValue > e.OldValue)
+            {
+                if (RGB)
+                    cApiSingleton.Instance.RGBBrightUp();
+                else
+                    cApiSingleton.Instance.BrightUp();
+            }
+            else
+            {
+                if (RGB)
+                    cApiSingleton.Instance.RGBBrightDown();
+                else
+                    cApiSingleton.Instance.BrightDown();
+            }
+        }      
+
+        private void btnRestart_Click(object sender, RoutedEventArgs e)
+        {
+            RGB = false;
+            cApiSingleton.Instance.SetDefaultTempAndBright();
+
+        }
+
+        private void btn1_Click(object sender, RoutedEventArgs e)
+        {
+            lampManagement(sender, 1);
+        }
+
+        private void btn2_Click(object sender, RoutedEventArgs e)
+        {
+            lampManagement(sender, 2);
+        }
+
+        private void btn3_Click(object sender, RoutedEventArgs e)
+        {
+            lampManagement(sender, 3);
+        }
+
+        private void btn4_Click(object sender, RoutedEventArgs e)
+        {
+            lampManagement(sender, 4);
+        }
+
+        void lampManagement(object sender, int num_lump)
+        {
+            if (sender != null)
+            {
+                var btn = sender as RoundToggleButton;
+                if(btn != null)
+                {
+                    if ((bool)btn.IsChecked)
+                        cApiSingleton.Instance.LampOn(num_lump);
+                    else
+                    {
+                        RGB = false;
+                        cApiSingleton.Instance.LampOff(num_lump);
+                    }
+                }
+            }
+        }        
+
+        private void btnCheckUncheck_Click(object sender, RoutedEventArgs e)
+        {
+            var check = (bool)btnCheckUncheck.IsChecked;
+            lampCheckUncheck(check);
+            if (check)
+                cApiSingleton.Instance.AllOn();
+            else
+            {
+                RGB = false;
+                cApiSingleton.Instance.AllOff();
+            }
+               
+        }     
+
+        void lampCheckUncheck(bool check)
+        {
+            btn1.IsChecked = check;
+            btn2.IsChecked = check;
+            btn3.IsChecked = check;
+            btn4.IsChecked = check;
+        }
 
         // Пример кода для сборки локализованной панели ApplicationBar
         //private void BuildLocalizedApplicationBar()

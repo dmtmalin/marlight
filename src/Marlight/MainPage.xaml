@@ -72,14 +72,39 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Тон" Style="{StaticResource PhoneTextBlockBase}" />
                 <c4f:SuperSlider Grid.Column="1" x:Name="slWarm" ValueChanged="slWarm_ValueChanged"/>
+                <TextBlock Grid.Row="1" Text="Яркость" Style="{StaticResource PhoneTextBlockBase}" />
+                <c4f:SuperSlider Grid.Row="1" Grid.Column="1" x:Name="slLight" ValueChanged="slLight_ValueChanged" />
+                <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <HyperlinkButton Grid.Column="3" Content="Сброс" x:Name="btnRestart" Click="btnRestart_Click"/>
+                </Grid>               
             </Grid>
             
-            <StackPanel Grid.Row="1">
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />                    
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Лампы" Style="{StaticResource PhoneTextBlockBase}" />
+                <c4f:RoundToggleButton x:Name="btn1" VerticalAlignment="Center" Grid.Column="1" Content="1" Click="btn1_Click"/>
+                <c4f:RoundToggleButton x:Name="btn2" VerticalAlignment="Center" Grid.Column="2" Content="2" Click="btn2_Click"/>
+                <c4f:RoundToggleButton x:Name="btn3" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Content="3" Click="btn3_Click"/>
+                <c4f:RoundToggleButton x:Name="btn4" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2" Content="4" Click="btn4_Click"/>
+                <c4f:RoundToggleButton x:Name="btnCheckUncheck" VerticalAlignment="Center" Grid.Row="1" Grid.Column="3" Click="btnCheckUncheck_Click"/>
                 
-                
-            </StackPanel>
-
-
+            </Grid>
+            
         </Grid>
 
         <!--Раскомментируйте, чтобы увидеть сетку выравнивания и выровнять
