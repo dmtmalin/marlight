@@ -57,7 +57,7 @@
             <StackPanel Grid.Row="0">
                 <HyperlinkButton x:Name="btnSettings" Content="0.0.0.0:0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnSettings_Click"/>
                 <HyperlinkButton x:Name="btnColor" Content="Палитра" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnColor_Click" />
-                <HyperlinkButton x:Name="btnMode" Content="Режим" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnMode_Click" />
+                <HyperlinkButton x:Name="btnMode" Content="Шаблон" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnMode_Click" />
             </StackPanel>
             
             <Grid Grid.Row="1">
@@ -71,9 +71,9 @@
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Тон" Style="{StaticResource PhoneTextBlockBase}" />
-                <c4f:SuperSlider Grid.Column="1" x:Name="slWarm" ValueChanged="slWarm_ValueChanged"/>
+                <c4f:SuperSlider Grid.Column="1" x:Name="slWarm" Value="5.0" ValueChanged="slWarm_ValueChanged"/>
                 <TextBlock Grid.Row="1" Text="Яркость" Style="{StaticResource PhoneTextBlockBase}" />
-                <c4f:SuperSlider Grid.Row="1" Grid.Column="1" x:Name="slLight" ValueChanged="slLight_ValueChanged" />
+                <c4f:SuperSlider Grid.Row="1" Grid.Column="1" x:Name="slLight" Value="5.0" ValueChanged="slLight_ValueChanged" />
                 <Grid Grid.Row="2" Grid.ColumnSpan="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />

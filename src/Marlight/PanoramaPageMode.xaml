@@ -1,0 +1,76 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Marlight.PanoramaPageMode"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:c4f="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="False">
+
+    <!--LayoutRoot содержит корневую сетку, где размещается все содержимое страницы-->
+    <Grid x:Name="LayoutRoot">
+        <phone:Panorama Title="Marlight">
+
+            <!--Первый элемент Panorama-->
+            <phone:PanoramaItem Header="Ненастраиваемые">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Ночь" VerticalAlignment="Center" Style="{StaticResource PhoneTextExtraLargeStyle}" />                   
+                    <TextBlock Grid.Row="1" Text="Встреча" VerticalAlignment="Center" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                    <TextBlock Grid.Row="2" Text="Чтение" VerticalAlignment="Center" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                    <TextBlock Grid.Row="3" Text="Смена цвета" VerticalAlignment="Center" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                    <c4f:RoundButton Grid.Column="1" x:Name="btnNight" VerticalAlignment="Center" Click="btnNight_Click" />
+                    <c4f:RoundButton Grid.Row="1" Grid.Column="1" x:Name="btnMeet" VerticalAlignment="Center" Click="btnMeet_Click" />
+                    <c4f:RoundButton Grid.Row="2" Grid.Column="1" x:Name="btnRead" VerticalAlignment="Center" Click="btnRead_Click" />
+                    <c4f:RoundButton Grid.Row="3" Grid.Column="1" x:Name="btnMode" VerticalAlignment="Center" Click="btnMode_Click" />
+                </Grid>
+            </phone:PanoramaItem>
+
+            <!--Второй элемент Panorama-->
+            <phone:PanoramaItem Header="Настраиваемые">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Таймер" VerticalAlignment="Center" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="On" HorizontalAlignment="Center"  Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="Off" HorizontalAlignment="Center" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                    <TextBlock Grid.Row="3" Text="Сигнал" VerticalAlignment="Center" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                    <TextBlock Grid.Row="4" Grid.Column="1" Text="On" HorizontalAlignment="Center" Style="{StaticResource PhoneTextExtraLargeStyle}" />
+                    <c4f:RoundButton Grid.Column="1" x:Name="btnTimer" VerticalAlignment="Center" Click="btnTimer_Click" />
+                    <c4f:RoundButton Grid.Row="3" Grid.Column="1" x:Name="btnAlarm" VerticalAlignment="Center" Click="btnAlarm_Click"/>
+                    <c4f:TimeSpanPicker Grid.Row="1" x:Name="tspTimerOn" ValueChanged="tsp_ValueChanged"/>
+                    <c4f:TimeSpanPicker Grid.Row="2" x:Name="tspTimerOff" ValueChanged="tsp_ValueChanged"/>
+                    <c4f:TimeSpanPicker Grid.Row="4" x:Name="tspAlarmOn" ValueChanged="tsp_ValueChanged"/>
+                </Grid>
+            </phone:PanoramaItem>
+
+           
+        </phone:Panorama>
+    </Grid>
+
+</phone:PhoneApplicationPage>

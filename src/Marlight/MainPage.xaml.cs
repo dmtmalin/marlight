@@ -60,7 +60,7 @@ namespace Marlight
 
         private void btnMode_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new Uri("/PanoramaPageMode.xaml", UriKind.Relative));
         }
 
         private void slWarm_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -92,6 +92,8 @@ namespace Marlight
         private void btnRestart_Click(object sender, RoutedEventArgs e)
         {
             RGB = false;
+            slLight.Value = 5.0;
+            slWarm.Value = 5.0;
             cApiSingleton.Instance.SetDefaultTempAndBright();
 
         }
