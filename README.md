@@ -3,7 +3,7 @@ marlight
 
 windows phone 8
 
-![Alt text](http://i.imgur.com/SzX14io "Main")
+![Alt text](http://i.imgur.com/SzX14io.png "Main")
 
 [Imgur](http://i.imgur.com/SzX14io)
 [Imgur](http://i.imgur.com/cUVSQJQ)
